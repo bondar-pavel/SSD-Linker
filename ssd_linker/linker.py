@@ -1,10 +1,10 @@
 import win32
 
 class Linker(object):
-"""Move data between drives and create symlinks
+    """Move data between drives and create symlinks
 
-   Just untested pseudo code for now to describe concept.
-"""
+    Just untested pseudo code for now to describe concept.
+    """
 
     ADDITION = '._linker_'
 
@@ -34,3 +34,7 @@ class Linker(object):
 
     def delete_symlink(self, symlink):
         win32file.DeleteFile(symlink)
+
+# debug code, remove it once code become workable
+linker = Linker()
+linker.move_data("D:\\temp1", "C:\temp2")
