@@ -9,18 +9,18 @@ So SSD Linker is a GUI tool for easy managing cross-drive (ssd and hdd) links. A
 
 0. Using SSD as a cache for set of folders from HDD to speed up gaming/apps;
 
-Creates symlinks from HDD to SSD drive. Example:
+In this case it creates symlinks from HDD to SSD drive. Example:
 
 * C:\ is SSD
 * D:\ is HDD
 
-And you want to speed up game at D:\games\GTAVI  (~50GB). SSD Linker will:
+And you want to speed up game at D:\games\GTAVI  (~50GB). SSD Linker will (by default):
 
-* copy content to C:\__ssd_linker_storage__\d\games\GTAVI
-* optionally move original dir to backup D:\__ssd_linker_backup__\games\GTAVI to save time on unlinking (but do not free space during linked stage);
-* or just delete original dir D:\games\GTAVI (save space, but will require copying data back on unlinking)
+* copy content to C:\ssd_linker_storage\d\games\GTAVI
+* delete original dir D:\games\GTAVI
+* create symlink from old source to new destination D:\games\GTAVI to C:\ssd_linker_storage\d\games\GTAVI
 
-Once you are done with particular game you might unlink it, so it will move data back to original driver and delete symlinks.
+Once you are done with particular game you might unlink it, so it will move data back to original drive and delete symlinks.
 
 If you don’t have enough space on SSD to store all game you can symlink only selected folders or even files. For example you have 30 GB free on SSD and game is 50GB. So you go inside D:\games\GTAVI and see:
 
