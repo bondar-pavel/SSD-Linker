@@ -1,7 +1,5 @@
 import sys
-from PyQt4 import QtGui, uic
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+from PyQt4 import QtCore, QtGui, uic
 
 import tree as hdd_tree
 
@@ -14,7 +12,7 @@ class MyWindow(QtGui.QMainWindow):
 
 def addItems(parent, elements):
      for text, children in elements:
-        item = QStandardItem(text)
+        item = QtGui.QStandardItem(text)
         parent.appendRow(item)
         if children:
             addItems(item, children)
@@ -23,7 +21,7 @@ if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     window = MyWindow()
 
-    model = QStandardItemModel()
+    model = QtGui.QStandardItemModel()
     tree = hdd_tree.list_dirs()
     print tree
     addItems(model, tree)
