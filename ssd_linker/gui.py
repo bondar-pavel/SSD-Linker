@@ -5,20 +5,6 @@ from PyQt4.QtGui import *
 
 import tree as hdd_tree
 
-data = [
-    ("Alice", [
-        ("Keys", []),
-        ("Purse", [
-            ("Cellphone", [])
-            ])
-        ]),
-    ("Bob", [
-        ("Wallet", [
-            ("Credit card", []),
-            ("Money", [])
-            ])
-        ])
-    ]
 
 class MyWindow(QtGui.QMainWindow):
     def __init__(self):
