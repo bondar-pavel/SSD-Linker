@@ -22,7 +22,7 @@ if __name__ == '__main__':
     window = MyWindow()
 
     model = QtGui.QStandardItemModel()
-    tree = hdd_tree.list_dirs()
+    tree = hdd_tree.list_dirs(3)
     print tree
     addItems(model, tree)
     window.treeView.setModel(model)
