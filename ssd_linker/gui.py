@@ -69,11 +69,11 @@ if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     window = MyWindow()
 
-    tree = hdd_tree.list_dirs(3)
-    print tree
+    #tree = hdd_tree.list_dirs(3)
+    #print tree
 
-    model = QtGui.QStandardItemModel()
-    addItems(model, tree)
+    model = QtGui.QDirModel()
+    #addItems(model, tree)
     window.setWindowTitle('SSD Linker')
     window.treeView.setModel(model)
     window.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
