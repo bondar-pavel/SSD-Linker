@@ -26,30 +26,32 @@ class MyWindow(QtGui.QMainWindow):
     def contextMenuRequested(self, point):
         menu         = QtGui.QMenu()
         index = self.treeView.indexAt(point)
+        print index
+        print dir(index)
         dirs = self.index_to_path_array(index)
         path = os.path.join(*dirs)
         print path
         if self.isSsd(path):
             action = menu.addAction("Move to SSD")
             self.connect(action, SIGNAL("triggered()"),
-                         self, SLOT("_move_to_ssd()"))
+                         lambda: self._move_to_ssd(path))
         else:
             action = menu.addAction("Move to HDD")
             self.connect(action, SIGNAL("triggered()"),
-                         self,SLOT("_move_to_hdd()"))
+                         lambda: self._move_to_hdd(path))
         property = menu.addAction("Property")
         self.connect(property, SIGNAL("triggered()"),
                      self,SLOT("_property()"))
         menu.exec_(self.mapToGlobal(point))
 
     @pyqtSlot()
-    def _move_to_ssd(self):
-        print "Moving to SSD"
+    def _move_to_ssd(self, path):
+        print "Moving to SSD: %s" % path
         self.show()
 
     @pyqtSlot()
-    def _move_to_hdd(self):
-        print "Moving to HDD"
+    def _move_to_hdd(self, path):
+        print "Moving to HDD: %s" % path
         self.show()
 
     @pyqtSlot()
