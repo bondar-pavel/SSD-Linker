@@ -1,21 +1,10 @@
 import os
 import sys
-import win32file
 
-# Win32file doesn't seem to have this attribute.
-FILE_ATTRIBUTE_REPARSE_POINT = 1024
-# To make things easier.
-REPARSE_FOLDER = (win32file.FILE_ATTRIBUTE_DIRECTORY | FILE_ATTRIBUTE_REPARSE_POINT)
-
-def islink(fpath):
-    """ Windows islink implementation. """
-    if win32file.GetFileAttributes(fpath) & REPARSE_FOLDER == REPARSE_FOLDER:
-        return True
-    return False
 
 def buildTree(dir, deep=1):
     ok_for_read = (deep > 0 and os.path.isdir(dir)
-                   and os.access(dir, os.R_OK) and not islink(dir))
+                   and os.access(dir, os.R_OK))
     if not ok_for_read:
         return []
 
