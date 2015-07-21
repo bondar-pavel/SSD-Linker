@@ -29,7 +29,7 @@ class MyWindow(QtGui.QMainWindow):
         print index
         print dir(index)
         dirs = self.index_to_path_array(index)
-        path = os.path.join(*dirs)
+        path = os.path.join(*dirs) if dirs else ''
         print path
         if self.isSsd(path):
             action = menu.addAction("Move to SSD")
