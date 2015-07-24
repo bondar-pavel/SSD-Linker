@@ -1,5 +1,4 @@
 import os
-import win32file
 import shutil
 
 
@@ -38,12 +37,9 @@ class Linker(object):
         Since now data on the same drive it should work as fast as rename.
         """
         tmp_source = self._hdd + self._linker_dir
-        self.copy_file(destination, tmp_source)
+        shutil.copytree(destination, tmp_source)
         self.delete_symlink(source)
-        move(tmp_source, source)
-
-    def copy_file(self, source, destination):
-        win32file.CopyFile(source, destination, 1)
+        shutil.move(tmp_source, source)
 
     def create_link(self, source, link_name):
         os_symlink = getattr(os, "symlink", None)
@@ -59,4 +55,4 @@ class Linker(object):
                 raise ctypes.WinError()
 
     def delete_symlink(self, symlink):
-        win32file.DeleteFile(symlink)
+        os.unlink(symlink)
