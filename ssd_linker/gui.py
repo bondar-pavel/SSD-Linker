@@ -33,6 +33,12 @@ class MyWindow(QtGui.QMainWindow):
         index = self.treeView.indexAt(point)
         print index
         print dir(index)
+        model = self.treeView.model()
+        info = model.fileInfo(index)
+        print dir(info)
+        print "Info %s" % info.filePath()
+        print "Info %s" % info.canonicalFilePath()
+        print "Dir %s" % info.dir()
         raw_dirs = self.index_to_path_array(index)
         dirs = self.get_os_specific_dirs(raw_dirs)
         path = os.path.join(*dirs) if dirs else ''
