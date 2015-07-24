@@ -4,6 +4,7 @@ from PyQt4 import QtCore, QtGui, uic
 from PyQt4.QtCore import pyqtSlot, SIGNAL, SLOT
 
 import tree as hdd_tree
+import linker
 
 
 class MyWindow(QtGui.QMainWindow):
@@ -53,12 +54,14 @@ class MyWindow(QtGui.QMainWindow):
     @pyqtSlot()
     def _move_to_ssd(self, path):
         print "Moving to SSD: %s" % path
-        self.show()
+        my_linker = linker.Linker()
+        my_linker.move_to_ssd(path)
 
     @pyqtSlot()
     def _move_to_hdd(self, path):
         print "Moving to HDD: %s" % path
-        self.show()
+        my_linker = linker.Linker()
+        my_linker.move_to_ssd(path)
 
     @pyqtSlot()
     def _property(self):
