@@ -19,6 +19,11 @@ class MyWindow(QtGui.QMainWindow):
             index = index.parent()
         return dirs
 
+    def get_os_specific_dirs(self, raw_dirs):
+        if sys.platform == "win32" and raw_dirs:
+            raw_dirs.insert(1, '\\')
+        return raw_dirs
+
     def isSsd(self, path):
         return len(path) > 10
 
@@ -28,7 +33,8 @@ class MyWindow(QtGui.QMainWindow):
         index = self.treeView.indexAt(point)
         print index
         print dir(index)
-        dirs = self.index_to_path_array(index)
+        raw_dirs = self.index_to_path_array(index)
+        dirs = self.get_os_specific_dirs(raw_dirs)
         path = os.path.join(*dirs) if dirs else ''
         print path
         if self.isSsd(path):
