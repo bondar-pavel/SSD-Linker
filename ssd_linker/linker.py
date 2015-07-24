@@ -8,7 +8,7 @@ class Linker(object):
     Just untested pseudo code for now to describe concept.
     """
 
-    def __init__(self, ssd='C:\\', hdd='D:\\', linker_dir='_linker_'):
+    def __init__(self, ssd='C:', hdd='D:', linker_dir='_linker_'):
         self._ssd = ssd
         self._hdd = hdd
         self._linker_dir = linker_dir
@@ -17,8 +17,8 @@ class Linker(object):
             os.makedirs(ssd_sys_dir)
 
     def move_to_ssd(self, source):
-        s_dir = '\\34324'
-        ssd_dir = self._ssd + self._linker_dir + s_dir
+        sanitazed_dir = source.replace(':', '')
+        ssd_dir = '\\'.join([self._ssd, self._linker_dir, sanitazed_dir])
         self.move_data(source, ssd_dir)
 
     def move_data(self, source, destination):
