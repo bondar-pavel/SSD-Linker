@@ -3,7 +3,6 @@ import sys
 from PyQt4 import QtCore, QtGui, uic
 from PyQt4.QtCore import pyqtSlot, SIGNAL, SLOT
 
-import tree as hdd_tree
 import linker
 
 
@@ -68,23 +67,11 @@ class MyWindow(QtGui.QMainWindow):
         print "Checking properties"
 
 
-def addItems(parent, elements):
-     for text, children in elements:
-        item = QtGui.QStandardItem(text)
-        parent.appendRow(item)
-        if children:
-            addItems(item, children)
-
-
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     window = MyWindow()
 
-    #tree = hdd_tree.list_dirs(3)
-    #print tree
-
     model = QtGui.QDirModel()
-    #addItems(model, tree)
     window.setWindowTitle('SSD Linker')
     window.treeView.setModel(model)
     window.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
